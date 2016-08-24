@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="__Css__/skin.css" />
+ <script language="javascript" type="text/javascript" src="__Js__/My97DatePicker/WdatePicker.js"></script>
+ <script type="text/javascript">
+ function changeValue()
+        {
+            var total = document.getElementById("total");
+            var num1 = document.getElementById("num1");
+            var num2 = document.getElementById("num2");  
+            var totalValue = 0;
+            if (num1.value)
+                totalValue += parseFloat(num1.value);
+           
+            if (num2.value)
+                totalValue *= parseFloat(num2.value);
+            total.value = totalValue;
+        }
+    </script>
+</head>
+    <body>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">  
+<tr>
+                <td width="17" valign="top" background="__Img__/mail_left_bg.gif">
+                    <img src="__Img__/left_top_right.gif" width="17" height="29" />
+                </td>
+                <td valign="top" background="__Img__/content_bg.gif">
+                    <table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" background="./__Img__/content_bg.gif">
+					<script>
+
+function import_check(){
+
+    var f_content = form1.file.value;
+
+       if(f_content==''){
+
+               alert('请选择您要上传的文件！');
+
+               return false;
+
+       }
+
+    var fileext=f_content.substring(f_content.lastIndexOf("."),f_content.length)
+
+        fileext=fileext.toLowerCase()
+
+    if (fileext!='.xls')
+
+        {
+
+        alert("对不起，导入数据格式必须是xls格式文件哦，请您调整格式后重新上传，谢谢 ！");           
+
+        return false;
+
+        }
+
+}
+
+</script>
+
+<form id="form1" name="form1" action="__URL__/impUser" method="post" enctype="multipart/form-data" >
+
+  <input name="file_stu" type="file" id="file"  />
+
+  <input type="submit" class='background_img' value="上传" style='margin-top:2px;' onclick="return import_check();"/>
+
+</form>
+				</table>
+                </td>
+                <td width="16" valign="top" background="__Img__/mail_right_bg.gif"><img src="__Img__/nav_right_bg.gif" width="16" height="29" /></td>
+            </tr>
+            <!-- 中间部分开始 -->
+            <tr>
+                <!--第一行左边框-->
+                <td valign="middle" background="__Img__/mail_left_bg.gif">&nbsp;</td>
+                <!--第一行中间内容-->
+                <td valign="top" bgcolor="#F7F8F9">
+                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                        <!-- 空白行-->
+                        <tr><td colspan="2" valign="top">&nbsp;</td><td>&nbsp;</td><td valign="top">&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="4">
+                                <table>
+ <?php var_dump(__Img__);?>                                  
+  
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 一条线 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <!-- 产品列表开始 -->
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="96%">
+                                <table width="100%">
+                                    <tr>
+                                        <td colspan="2">
+                                          
+                                                <table width="100%"  class="cont tr_color">
+                                                    <tr>
+                                                        <th>人员序号</th>
+                                                        <th>人员名称</th>
+                                                        <th>卡号信息</th>
+                                                        <th>性别</th>
+                                                        <th>村别</th>
+                                                        <th>乡镇</th>
+                                                        <th>人员状态</th>
+                                                          <th></th>
+                                                          <th align="center">操作</th>
+                                                          <th></th>
+                                                        <th></th>
+                                                    <volist name="data" id="vo">
+                                                    </tr>
+                                                    <tr align="center" class="d">
+                                                        <td>{$i}</td>
+                                                        <td>{$vo.user_name}</td>
+                                                        
+                                                        <td>{$vo.user_number}</td>
+                                          
+                                                        <td><if condition="$vo.user_sex eq 1">男<else />女 </if></td>
+                                                        <td>{$vo.user_village}</td>
+                                                        <td>{$vo.user_town}</td>
+                                                        <td><if condition="$vo.user_stat eq '1'">在岗<else />离职</if></td>
+                                                        <td><a href="__URL__/upd/id/{$vo.id}">修改</a></td>
+                                                        <td><a href="__URL__/delete/id/{$vo.id}">彻底删除</a></td>
+                                                        <td><a href="__URL__/del/id/{$vo.id}">状态修改</a></td>
+                                                        <td><a href="__GROUP__/Sore/detail/id/{$vo.id}">查看细节</a></td>
+                                                    </tr>
+                                                  </volist>
+                                                </table>
+                                           <p align="center">{$page}</p>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="2%">&nbsp;</td>
+                        </tr>
+                        <!-- 产品列表结束 -->
+                        <tr>
+                            <td height="40" colspan="4">
+                                <table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+                                    <tr><td></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="2%">&nbsp;</td>
+                            <td width="51%" class="left_txt">
+                                <img src="__Img__/icon_mail.gif" width="16" height="11"> 客户服务邮箱：**@foxmail.com<br />
+                                <img src="__Img__/icon_phone.gif" width="17" height="14"> 官方网站：<a href="http://www.**.cn"></a>
+                            </td>
+                            <td>&nbsp;</td><td>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td>
+                <td background="__Img__/mail_right_bg.gif">&nbsp;</td>
+            </tr>
+            <!-- 底部部分 -->
+            <tr>
+                <td valign="bottom" background="__Img__/mail_left_bg.gif">
+                    <img src="__Img__/buttom_left.gif" width="17" height="17" />
+                </td>
+                <td background="__Img__/buttom_bgs.gif">
+                    <img src="__Img__/buttom_bgs.gif" width="17" height="17">
+                </td>
+                <td valign="bottom" background="__Img__/mail_right_bg.gif">
+                    <img src="__Img__/buttom_right.gif" width="16" height="17" />
+                </td>           
+            </tr> 
+        </table>
+    </body>
+</html>

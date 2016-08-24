@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>百姓广场0元送家具</title>
+<script type="text/javascript" src="__ROOT__/Public/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="__ROOT__/Public/layer.m/layer.m.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<style type="text/css">
+*{ margin:0px; padding:0px; font-size:20px}
+img{ width:100%; height:100%;}
+.layermcont{ line-height:22px; border-radius:5px;position:relative; }
+.main{position:relative}
+.a1{ width:90%; height:auto; cursor:pointer; color:#FFF; text-align:left; border:0px solid #000; position:absolute; top:5%; left:6%; z-index:2}
+
+.one_img{position:relative;}
+.one_price{  position:absolute; z-index:4; font-size:18px; width:100%; height:15%; background-color:#999; top:80%;}
+.one_dprice span{ float:right; padding:2px 0px;}
+.one_title{ padding:5px 0px;}
+.list,li{list-style:none; margin:0; padding:0;}  
+
+.scroll{ width:500px; height:25px; overflow:hidden; border:0px solid #333;}  
+
+.scroll li{ width:500px; height:25px; line-height:25px; overflow:hidden;}  
+
+.scroll li a{ font-size:14px;color:#fff; text-decoration:none;}  
+
+.scroll li a:hover{ text-decoration:underline;}  
+</style>
+<script type="text/javascript">
+wx.config({
+    debug: false,
+    appId: "{$signPackage.appId}",
+    timestamp: "{$signPackage.timestamp}",
+    nonceStr: "{$signPackage.nonceStr}",
+    signature: "{$signPackage.signature}",
+    jsApiList: [
+           'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ',
+			'onMenuShareWeibo',
+			'onMenuShareQZone',
+			'startRecord',
+			'stopRecord',
+			'onVoiceRecordEnd',
+			'playVoice',
+			'pauseVoice',
+			'stopVoice',
+			'onVoicePlayEnd',
+			'uploadVoice',
+			'downloadVoice',
+			'chooseImage',
+			'previewImage',
+			'uploadImage',
+			'downloadImage',
+			'translateVoice',
+			'getNetworkType',
+			'openLocation',
+			'getLocation',
+			'hideOptionMenu',
+			'showOptionMenu',
+			'hideMenuItems',
+			'showMenuItems',
+			'hideAllNonBaseMenuItem',
+			'showAllNonBaseMenuItem',
+			'closeWindow',
+			'scanQRCode',
+			'chooseWXPay',
+			'openProductSpecificView',
+			'addCard',
+			'chooseCard',
+			'openCard'
+    ]
+  });
+  
+   // 微信分享
+    window.wx && wx.ready(function () {
+		wx.onMenuShareTimeline({
+			title: '0元送家具 大家来砍价', // 分享标题
+			link: 'http://kanjia.soxiqu.com/Shouquan/fcours/?f_openid={$f_openid}&f_nickname={$f_nickname}&id={$id}', // 分享链接
+			imgUrl: 'http://kanjia.soxiqu.com/Public/images/ff.jpg', // 分享图标
+			success: function () { 
+				alert('分享成功!');
+			},
+			cancel: function () { 
+				alert('分享失败!');
+			}
+		});
+		wx.onMenuShareQQ({
+			title: '0元送家具 大家来砍价', // 分享标题
+			desc: '中原百姓广场邀你来砍价，7款爆品家具0元送。', // 分享描述
+			link: 'http://kanjia.soxiqu.com/Shouquan/fcours/?f_openid={$f_openid}&f_nickname={$f_nickname}&id={$id}', // 分享链接
+			imgUrl: 'http://kanjia.soxiqu.com/Public/images/ff.jpg', // 分享图标
+			success: function () { 
+			   alert('分享成功!');
+			},
+			cancel: function () { 
+			   alert('分享失败!');
+			}
+		});
+		wx.onMenuShareAppMessage({
+			title: '0元送家具 大家来砍价', // 分享标题
+			desc: '中原百姓广场邀你来砍价，7款爆品家具0元送。', // 分享描述
+			link: 'http://kanjia.soxiqu.com/Shouquan/fcours/?f_openid={$f_openid}&f_nickname={$f_nickname}&id={$id}', // 分享链接
+			imgUrl: 'http://kanjia.soxiqu.com/Public/images/ff.jpg', // 分享图标
+			type: '', // 分享类型,music、video或link，不填默认为link
+			dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+			success: function () { 
+				// 用户确认分享后执行的回调函数
+			},
+			cancel: function () { 
+				// 用户取消分享后执行的回调函数
+			}
+		});
+        var wxFriendData = {
+            'link': "http://kanjia.soxiqu.com/Shouquan/fcours/?f_openid={$f_openid}&f_nickname={$f_nickname}&id={$id}",
+            'imgUrl': 'http://kanjia.soxiqu.com/Public/images/ff.jpg',
+            'title': '0元送家具 大家来砍价',
+            'desc': '中原百姓广场邀你来砍价，7款爆品家具0元送。',
+            'success': function () {
+            }
+        };
+
+        var wxTimelineData = {
+            'link': "http://kanjia.soxiqu.com/Shouquan/fcours/?f_openid={$f_openid}&f_nickname={$f_nickname}&id={$id}",
+            // 'link': window.__share_url,
+            'imgUrl': 'http://kanjia.soxiqu.com/Public/images/ff.jpg',
+            'title': '0元送家具 大家来砍价',
+            'success': function () {
+            }
+        };
+        wx.onMenuShareAppMessage(wxFriendData);
+        wx.onMenuShareTimeline(wxTimelineData);
+    });
+
+$(document).ready(function(){
+	
+	setInterval('autoScroll(".scroll")',3000);
+	layer.open({
+											type:1,
+											shade:false,
+ 											content:'<div class="a1"><div class="one_img" id=1><img src="/Public/p_img/{$id}.png"/></div><div class="one_title">{$p_article.title}</div><div>原价：{$p_article.y_price}元</div><div class="one_dprice"><span>元</span><span id="get_kgprice">{$p_article.k_price}</span><span>已砍至</span></div><div id="zikan" lang="{$p_article.id}" role="{$f_openid}" align = "{$f_nickname}"><img src="/Public/images/zikan.png" /></div><div id="fenxiang"><img src="/Public/images/hanren.png" /></div><div class="scroll"><ul class="list" id="tongzhi"><li><a href="#" target="_blank">加载数据中...</a></li><li><a href="#" target="_blank">sdfsdfsdf </a></li></ul></div></div><img src="__ROOT__/Public/images/foucs.jpg" usemap="#Map"/>',
+											success:function(){
+													var useropenidinfo = "{$userinfo.openid}";
+													 var id = "{$id}";
+													 
+  													$.post('/Shouquan/get_tongzhi/',{id:id,openid:useropenidinfo},function(data){
+														 
+														$('#tongzhi').html(data);
+													});
+													$('#fenxiang').on('click',function(){
+															layer.open({
+																	type: 1,
+																	content: '<img src="__ROOT__/Public/images/fenxiang.png"/>',
+																	style: 'width:100%; filter: alpha(opacity=45); opacity:0.45; height:100%; background-color:#F05133; color:#fff; border:none;',
+																	time:3,
+																	closeBtn:true
+																});
+														});
+													$('#zikan').on('click',function(){
+															var p_id = $(this).attr('lang');
+															var f_openid = $(this).attr('role');
+															var f_nickname = $(this).attr('align');
+															 
+ 															$.ajax({
+																	type:'post',
+																	async:true,
+																	url:'/Shouquan/insertkanjia/',
+																	data:'p_id='+p_id+'&f_openid='+f_openid+'&f_nickname='+f_nickname,
+																	dataType:'json',
+ 																	success:function(json){
+																		//var json = eval("("+json+")");
+																			if(json.result)
+																			{
+																				layer.open({
+																					content: json.result,
+																					time: 5
+																				});	
+																			}
+																			else
+																			{
+																				layer.open({
+																					content: '哟，您这次砍了'+json.rand+'元哟！',
+																					time: 3
+																				});	
+																				var kj_re = (Number({$p_article.k_price}) - Number(json.rand));
+																				$('#get_kgprice').html(kj_re);
+																			}
+																		},
+																	error:function(json){
+																			layer.open({
+																				content: '服务器繁忙，请待会儿再试！',
+																				time: 5
+																			});
+																		}
+																	
+																});
+														});
+												}
+											 
+										});
+	/*layer.open({
+			type:2,
+			time:3,
+			shade:false,
+			end:function(){
+					layer.open({
+							type:1,
+							shade:false,
+							time:3,
+							content:'<img src="__ROOT__/Public/images/one.jpg"/>',
+							skin: 'demo-class',
+							end:function(){
+									layer.open({
+											type:1,
+											shade:false,
+ 											content:'<div class="one"><img src="__ROOT__/Public/p_img/1.jpg"/></div><img src="__ROOT__/Public/images/three.jpg"/>',
+											skin: 'demo-class'
+										});
+								}
+						});
+				}
+		});*/
+		
+});
+
+function autoScroll(obj){  
+
+   $(obj).find(".list").animate({  
+
+	   marginTop : "-25px"  
+
+   },500,function(){  
+
+	   $(this).css({marginTop : "0px"}).find("li:first").appendTo(this);  
+
+   })  
+
+}  
+</script>
+</head>
+
+<body>
+</body>
+</html>

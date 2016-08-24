@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=0.6">
+<title>浩骏租车</title>
+<style type="text/css">
+
+li{float:left; margin:auto 10px; list-style:none; height:50px; }
+body{text-align:center}
+div#container{margin:0 auto; width:500px;}
+div#header {background-color:#000099;}
+div#content {background-color:#EEEEEE;height:850px;width:500px;float:center;}
+</style>
+</head>
+<script language="javascript">
+  function caculateDays(){
+        var date1;
+        date1 = document.getElementById("date1").value;
+        var date2;
+        date2= document.getElementById("date2").value;
+    
+        
+        var r = /-/g;
+		
+        date1 = date1.replace(r,"/");
+        date2 = date2.replace(r,"/");//2015/08/06
+        var d1 = new Date(date1);
+        var d2 = new Date(date2);      //fri Aug28 2015 00:00:00
+        var days = Math.floor((d2.getTime()-d1.getTime())/(1000 * 60 * 60 * 24));
+		if(days<1){
+        alert('日期不合法！');
+		}else{
+		//	alert(days);//天数的差值
+		var	price = $('#basic').text();
+		//alert(price);
+		$("#rank").val(days*price);
+		}
+    }
+</script>
+<script language="javascript" type="text/javascript" src="http://hao.wx21.cn/Public/js/My97DatePicker/WdatePicker.js"></script>
+<script language="javascript" type="text/javascript" src="http://hao.wx21.cn/Public/js/jquery-1.4.2.min.js"></script>
+<body>
+<div id="container">
+<div id="header">
+<h1 align="center" style="color:yellow;">浩骏租车</h1>
+</div>
+<div id="content">
+<p>我要预订！</p>
+<?php
+echo $f_openid."<br>";
+var_dump($userinfo);
+?>
+<table align="center" cellspacing="40">
+<form action="http://hao.wx21.cn/index.php/Type/add" method="post">
+<tr>
+<th>车型</th>
+<th>价格</th>
+<th>库存</th>
+</tr>
+<li>
+<tr>
+<volist name="info" id='vo'>
+<td>{$vo.name}</td>
+<td><p id='basic'>{$vo.price}</p></td>
+<td>{$vo.hold}</td>
+</volist>
+</tr>
+</li>
+
+<tr>
+<td><strong>姓名：</strong></td><td><input type="text" name="name" value=""/></td>
+</tr>
+<tr>
+<td><strong>性别：</strong></td><td><select name="sex">
+  <option value ="1">男</option>
+  <option value ="2">女</option>
+</select></td>
+</tr>
+<tr>
+<td><strong>电话：</strong></td><td><input type="text" name="tel" value=""/></td>
+</tr>
+<tr>
+<td><strong>身份证号/驾驶证号：</strong></td><td><input type="text" name="card" value=""/></td>
+
+</tr>
+<tr>
+<td><strong>取车时间：</strong></td><td><input name="time1" id="date1"  readonly="readonly" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30'})"/></td>
+</tr>
+<tr>
+<td><strong>还车时间：</strong></td><td><input name="time2" id="date2"  readonly="readonly" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'2008-03-08 11:30:00',maxDate:'2100-03-10 20:59:30',onpicked:caculateDays})" "
+ /></td>
+ </tr>
+ <tr>
+<td><strong>地址：</strong></td><td><input type="text" name="addr" value=""></td>
+</tr>
+<tr>
+<td><strong>备注：</strong></td><td><input type="text" name="addition" value=""></td>
+</tr>
+ <tr>
+ <td><strong>金额：</strong></td><td><input style="background:transparent;border:0px" type="text" name="price" id="rank" value="0" readonly="readonly"/></td>
+ </tr>
+ 
+<input type="hidden" name="id" value="{$vo.id}">
+
+ <tr>
+ <td><input type="submit" value="预订"></td>
+</tr>
+</form>
+</table>
+</div>
+</body>
+</html>
+

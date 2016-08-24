@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>浩骏租车</title>
+<style type="text/css">
+
+li{float:left; margin:auto 10px; list-style:none; height:30px; }
+body{text-align:center}
+div#container{margin:0 auto; width:500px;}
+div#header {background-color:#000099;}
+div#content {background-color:#EEEEEE;height:500px;width:500px;float:conter;}
+</style>
+</head>
+<body>
+<div id="container">
+<div id="header">
+<h1 align="center" style="color:yellow;">浩骏租车</h1>
+</div>
+<div id="content">
+<p>请选择车型！</p>
+<table align="center" cellspacing="50">
+<tr>
+<th>车型</th>
+<th>价格</th>
+<th>库存</th>
+<th>能否预约</th>
+</tr>
+<volist name="info" id="vo">
+<tr>
+<td>{$vo.name}</td>
+<td>{$vo.price}</td>
+<td>{$vo.hold}</td>
+<td><if condition="$vo.hold elt 0 ">不可以
+    <else /> <a href="http://hao.wx21.cn/index.php/Type/order/id/{$vo.id}">可以</a>
+ </if></td>
+</tr>
+</volist>
+
+</table>
+</div>
+
+</body>
+</html>

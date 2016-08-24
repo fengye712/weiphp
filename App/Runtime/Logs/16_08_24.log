@@ -1,0 +1,6 @@
+[ 2016-08-24T18:13:07+08:00 ] 0.0.0.0 /wei/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.022001s ]
+NOTIC: [8] Undefined index: url E:\php\WWW\wei\App\Lib\Action\IndexAction.class.php 第 6 行.
+
